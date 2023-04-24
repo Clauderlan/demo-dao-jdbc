@@ -3,6 +3,7 @@ package application;
 
 
 import db.DB;
+import entities.Department;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,26 +14,9 @@ public class Program {
 
     public static void main(String[] args) {
 
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+        Department department = new Department(1, "TestMan");
+        System.out.println(department);
 
-        try {
-            // Select ->
-            connection = DB.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from department");
-
-            while (resultSet.next()){
-                System.out.println(resultSet.getInt("Id") + ", " + resultSet.getString("Name"));
-            }
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }finally {
-            DB.closeStatement(statement);
-            DB.closeConnection();
-            DB.closeResultSet(resultSet);
-        }
     }
 
 }
