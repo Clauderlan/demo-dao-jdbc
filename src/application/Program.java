@@ -23,7 +23,10 @@ public class Program {
         System.out.println("\n++ Test 2 : seller findbydepartment");
         Department department = new Department(2, null);
         List<Seller> sellerList = sellerDao.findByDepartment(department);
+        sellerList.forEach(System.out::println);
 
+        System.out.println("\n++ Test 3 : seller findAll");
+        sellerList = sellerDao.findAll();
         sellerList.forEach(System.out::println);
     }
 
