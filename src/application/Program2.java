@@ -20,8 +20,12 @@ public class Program2 {
         //departmentDao.update(department);
         //System.out.println("UPDATED.");
 
-        System.out.println("\nTest 02 -> DELETE");
+        System.out.println("\nTest 03 -> DELETE");
         departmentDao.deleteById(12);
         System.out.println("DELETED.");
+
+        System.out.println("\nTest 04 -> SELECT BY ID");
+        department = departmentDao.findById(3);
+        System.out.println(department);
     }
 }

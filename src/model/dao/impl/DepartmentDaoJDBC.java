@@ -87,11 +87,44 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     @Override
     public Department findById(Integer id) {
-        return null;
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try{
+            preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM department "
+                    + "WHERE Id = ?"
+            );
+            preparedStatement.setInt(1, id);
+
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return instantiateDepartment(resultSet);
+            }
+            return null;
+
+        }catch (SQLException e){
+            throw new DbException(e.getMessage());
+        }finally {
+            DB.closeStatement(preparedStatement);
+        }
     }
 
     @Override
     public List<Department> findAll() {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try{
+            statement = connection.createStatement();
+            statement.executeQuery("SELECT * FROM DEPARTMENT");
+        }catch (SQLException e){
+            throw new DbException(e.getMessage());
+        }finally {
+            DB.closeStatement(statement);
+        }
         return null;
+    }
+    private Department instantiateDepartment(ResultSet resultSet) throws SQLException {
+        return new Department(resultSet.getInt("Id"), resultSet.getString("Name"));
     }
 }
