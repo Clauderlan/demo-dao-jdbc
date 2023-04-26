@@ -28,6 +28,11 @@ public class Program {
         System.out.println("\n++ Test 3 : seller findAll");
         sellerList = sellerDao.findAll();
         sellerList.forEach(System.out::println);
+
+        System.out.println("\n++ Test 4 : seller insert");
+        Seller newSeller = new Seller(null, "Greg","greg@hotmail.com", new Date(), 4000.0, department);
+        sellerDao.insert(newSeller);
+        System.out.println("Inserted. New Seller id -> " + newSeller.getId());
     }
 
 }
