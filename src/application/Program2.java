@@ -11,13 +11,17 @@ public class Program2 {
         System.out.println("Test 01 -> INSERT");
         Department department = new Department(null, "Geraldaum da Massa");
         //departmentDao.insert(department);
-        System.out.println(department.getId());
+        //System.out.println(department.getId());
 
 
-        System.out.println("Test 02 -> UPDATE");
+        System.out.println("\nTest 02 -> UPDATE");
         department.setId(13);
         department.setName("Claudiorr");
-        departmentDao.update(department);
+        //departmentDao.update(department);
+        //System.out.println("UPDATED.");
 
+        System.out.println("\nTest 02 -> DELETE");
+        departmentDao.deleteById(12);
+        System.out.println("DELETED.");
     }
 }
