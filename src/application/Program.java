@@ -35,8 +35,12 @@ public class Program {
         //System.out.println("Inserted. New Seller id -> " + newSeller.getId());
 
         System.out.println("\n++ Test 5 : seller update");
-        newSeller.setName("Ricardao");
-        sellerDao.update(newSeller);
+        //newSeller.setName("Ricardao");
+        //sellerDao.update(newSeller);
+
+        System.out.println("\n++ Test 6 : seller delete");
+        sellerDao.deleteById(20);
+        System.out.println("Deleted.");
 
     }
 
