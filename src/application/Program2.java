@@ -25,7 +25,11 @@ public class Program2 {
         System.out.println("DELETED.");
 
         System.out.println("\nTest 04 -> SELECT BY ID");
-        department = departmentDao.findById(3);
-        System.out.println(department);
+        //department = departmentDao.findById(3);
+        //System.out.println(department);
+
+        System.out.println("\nTest 05 -> SELECT ALL");
+        departmentDao.findAll().forEach(System.out::println);
+
     }
 }
